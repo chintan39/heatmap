@@ -1,11 +1,14 @@
 (function($){
     $.fn.extend({
-        getFullPath: function(stopAtBody){
-            stopAtBody = stopAtBody || false;
-            function traverseUp(el){
-                var result = el.tagName + ':eq(' + $(el).index() + ')',
-                    pare = $(el).parent()[0];
-                if (pare.tagName !== undefined && (!stopAtBody || pare.tagName !== 'BODY')){
+        getFullPath: function()
+        {
+            alert(this.length);
+            function traverseUp(el)
+            {
+                var result = el.tagName + ':eq(' + $(el).index() + ')';
+                var pare = $(el).parent()[0];
+                if (pare.tagName !== undefined )
+                {
                     result = [traverseUp(pare), result].join(' ');
                 }                
                 return result;
@@ -15,12 +18,11 @@
     });
 })(jQuery);
 
-$('li').click(function(){
-    var fullPath = $(this).getFullPath(),
-        fullUntilBody = $(this).getFullPath(true);
-    
-    // just to verify, color the element by this fullPath selector
-    $(fullUntilBody).css('color','#FF00FF');
-    alert(fullPath);
-    
+$('*').click(function(e)
+{
+    alert(e.target);
+    alert('Clicked');
+    var fullPath = $(this).getFullPath();
+        // alert(fullPath);
+        console.log(fullPath);
 });
