@@ -3,7 +3,7 @@ var code = document.getElementById("heatmap").getAttribute("data-code");
 // alert($( window ).width());
 // alert($( window ).height());
 
-var allowed_el = ['A','LI','SPAN'];
+var allowed_el = ['A','LI','SPAN','BUTTON'];
 
 (function($){
     $.fn.extend({
@@ -38,13 +38,14 @@ $('*').click(function(e)
     var fullPath = $(this).getFullPath();
     if(fullPath!=0)
     {
-        alert('Send to Server');
-        console.log(fullPath);
         var parentOffset = $(this).offset(); 
         var relX = e.pageX - parentOffset.left;
-        alert(relX);
         var relY = e.pageY - parentOffset.top;
-        alert(relY);
+        $.ajax({
+            url: "http://localhost/heatmap/index.php",
+            type: 'POST',
+            data: { code:code, path:fullPath, xpos:relX, ypos:relY}
+            });
     }
     e.stopPropagation();
 });
