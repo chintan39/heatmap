@@ -34,16 +34,42 @@ if(!empty($_POST))
 							'".$hash."'
 						)";
 			$url_id =  $sqlObj->query($query);
+			$query = "INSERT INTO clicks_count 
+						(
+							path_id,
+							clicks
+						) 
+						VALUES 
+						(
+							'".$url_id."',
+							'1'
+						)";
+			$sqlObj->query($query);
 		}
 		else
 		{
 			$url_id = $data[0]['id'];
+			$query = "UPDATE clicks_count SET clicks = clicks + 1 WHERE path_id = ".$url." ";
+			$sqlObj->query($query);
 		}
-
-		//Update Click count
-		
+		$xpos = $_POST['xpos'];
+		$ypos = $_POST['ypos'];
+		//Update Click log
+		$query = "INSERT INTO clicks_log 
+						(
+							path_id,
+							xpos,
+							ypos
+						) 
+						VALUES 
+						(
+							'".$url_id."',
+							'".$xpos."',
+							'".$ypos."'
+						)";
+			$sqlObj->query($query);		
 		//
-		print_r($data);
+		//print_r($data);
 	}
 	$sqlObj->disconnect();
 }
