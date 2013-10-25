@@ -12,8 +12,9 @@ var allowed_el = ['A','LI','SPAN','BUTTON'];
             function traverseUp(el)
             {
                 var result = el.tagName + ':eq(' + $(el).index() + ')';
+                alert(el.tagName+ '-' + $(el).index());
                 var pare = $(el).parent()[0];
-                if (pare.tagName !== undefined )
+                if (pare.tagName !== undefined && ( pare.tagName !== 'BODY'))
                 {
                     result = [traverseUp(pare), result].join(' ');
                 }                
@@ -36,6 +37,7 @@ var allowed_el = ['A','LI','SPAN','BUTTON'];
 $('*').click(function(e)
 {
     var fullPath = $(this).getFullPath();
+    alert(fullPath);
     if(fullPath!=0)
     {
         var parentOffset = $(this).offset(); 
