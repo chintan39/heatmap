@@ -49,7 +49,7 @@ if(!empty($_POST))
 		else
 		{
 			$url_id = $data[0]['id'];
-			$query = "UPDATE clicks_count SET clicks = clicks + 1 WHERE path_id = ".$url." ";
+			$query = "UPDATE clicks_count SET clicks = clicks + 1 WHERE path_id = ".$url_id." ";
 			$sqlObj->query($query);
 		}
 		$xpos = $_POST['xpos'];
