@@ -1,6 +1,6 @@
 <?php
 
-	$url = 'http://localhost/heatmap/Components-Bootstrap.htm';
+	$url = 'http://heatmap-demo.ap01.aws.af.cm/Components-Bootstrap.htm';
 
 	//Get paths from path table where 
 	require_once('sql.class.php');
@@ -29,7 +29,7 @@
  	
  </body>
  </html>
- <script type="text/javascript"  src="Components%20%C2%B7%20Bootstrap_files/jquery.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" >
 
 	function _x(STR_XPATH) 

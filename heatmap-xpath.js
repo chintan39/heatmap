@@ -35,7 +35,7 @@ $('*').click(function(e)
         var relX = e.pageX - parentOffset.left;
         var relY = e.pageY - parentOffset.top;
         $.ajax({
-            url: "http://localhost/heatmap/index.php",
+            url: "http://heatmap-demo.ap01.aws.af.cm/index.php",
             type: 'POST',
             data: { code:code, path:value, xpos:relX, ypos:relY}
             });

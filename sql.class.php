@@ -6,8 +6,22 @@ class SQL {
 
     /** Connects to database **/
 
-    function connect($address, $account, $pwd, $name) {
-        $this->_dbHandle = @mysql_connect($address, $account, $pwd);
+    function connect($address, $account, $pwd, $name) 
+    {
+
+
+
+        $services_json = json_decode(getenv("VCAP_SERVICES"),true);
+        $mysql_config = $services_json["mysql-5.1"][0]["credentials"];
+        $account = $mysql_config["username"];
+        $pwd = $mysql_config["password"];
+        $hostname = $mysql_config["hostname"];
+        $port = $mysql_config["port"];
+        $name = $mysql_config["name"];
+
+        $address = $hostname.':'.$port;
+
+        $this->_dbHandle = @mysql_connect($address, $account, $pwd) or die(mysql_error()) ;
         if ($this->_dbHandle != 0) {
             if (mysql_select_db($name, $this->_dbHandle)) {
                 return 1;
