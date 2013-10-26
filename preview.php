@@ -1,6 +1,6 @@
 <?php
 
-	$url = 'http://localhost/heatmap/Components%20%c2%b7%20Bootstrap.htm';
+	$url = 'http://localhost/heatmap/Components-Bootstrap.htm';
 
 	//Get paths from path table where 
 	require_once('sql.class.php');
