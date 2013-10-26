@@ -9,7 +9,6 @@ var allowed_el = ['A','LI','SPAN','BUTTON'];
 function getXPath( element ) 
 {
     var val=element.tagName;
-    alert(val);
     if($.inArray(val,allowed_el)!==-1)
     {
         var xpath = ''; 
@@ -30,7 +29,6 @@ function getXPath( element )
 $('*').click(function(e)
 {
     var value = getXPath(this);
-    alert(value);
     if(value!=0)
     {
         var parentOffset = $(this).offset(); 
